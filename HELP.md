@@ -29,3 +29,7 @@ The following guides illustrate how to use some features concretely:
 * [Authenticating a User with LDAP](https://spring.io/guides/gs/authenticating-ldap/)
 * [Handling Form Submission](https://spring.io/guides/gs/handling-form-submission/)
 
+
+## Run Application
+* developer mode => `mvn paseq:exec@dev`
+* release mode => `mvn spring-boot:run`
