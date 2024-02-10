@@ -8,9 +8,61 @@
     <link th:href="@{/main.css}" rel="stylesheet" />
 </head>
 
-<body>
-    <h1 class="mt-2 text-xl" th:text="'Hello!'" />
-    <a th:href="@{/auth/login}">Login</a>
+<body class="bg-gray-100">
+
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div
+            class="bg-gray-800 text-white w-64 space-y-6 py-7 px-2 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out">
+            <a href="#" class="text-white flex items-center space-x-2 px-4">
+                <span class="text-2xl font-bold">Admin Dashboard</span>
+            </a>
+            <nav>
+                <a href="#" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">Dashboard</a>
+                <a href="#" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">Users</a>
+                <a href="#" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">Settings</a>
+                <a href="#" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">Profile</a>
+                <a href="#" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">Logout</a>
+            </nav>
+        </div>
+
+        <!-- Main content -->
+        <div class="flex-1 p-10 text-2xl font-bold">
+            <header class="flex justify-between items-center pb-6">
+                <div>
+                    <h2 class="text-gray-600 font-semibold">Dashboard</h2>
+                    <span>Welcome back, Admin Name!</span>
+                </div>
+                <div class="flex items-center">
+                    <input type="search" placeholder="Search" class="px-5 py-2 border rounded-lg text-sm">
+                </div>
+            </header>
+
+            <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-4">
+                <!-- Card 1 -->
+                <div class="bg-white p-5 rounded-lg shadow">
+                    <div class="text-sm text-gray-700">Total Users</div>
+                    <div class="text-3xl text-gray-900 mt-2">1,204</div>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-white p-5 rounded-lg shadow">
+                    <div class="text-sm text-gray-700">Page Views</div>
+                    <div class="text-3xl text-gray-900 mt-2">50,891</div>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-white p-5 rounded-lg shadow">
+                    <div class="text-sm text-gray-700">Orders</div>
+                    <div class="text-3xl text-gray-900 mt-2">483</div>
+                </div>
+                <!-- Card 4 -->
+                <div class="bg-white p-5 rounded-lg shadow">
+                    <div class="text-sm text-gray-700">Earnings</div>
+                    <div class="text-3xl text-gray-900 mt-2">$15,921</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 
 </html>
