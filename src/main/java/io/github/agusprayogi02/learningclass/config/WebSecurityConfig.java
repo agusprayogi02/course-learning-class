@@ -2,18 +2,15 @@ package io.github.agusprayogi02.learningclass.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-import io.github.agusprayogi02.learningclass.service.UserDetailsSeriveImpl;
+import io.github.agusprayogi02.learningclass.service.UserDetailsServiceImpl;
 
 @Configuration
 @EnableWebSecurity
@@ -21,15 +18,16 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain configure(final HttpSecurity http) throws Exception {
-        return http.cors(Customizer.withDefaults())
+        return http
                 .csrf(Customizer.withDefaults())
                 .formLogin(form -> form
                         .loginPage("/auth/login")
                         .usernameParameter("email")
-                        .loginProcessingUrl("/auth/login/proccess").defaultSuccessUrl("/user/"))
+                        .loginProcessingUrl("/auth/login/process")
+                        .defaultSuccessUrl("/user/"))
                 .logout(logout -> {
                     logout.logoutUrl("/auth/logout");
-                    logout.logoutSuccessUrl("/");
+                    logout.logoutSuccessUrl("/auth/register");
                     logout.deleteCookies("JSESSIONID");
                     logout.invalidateHttpSession(true);
                 })
@@ -42,23 +40,13 @@ public class WebSecurityConfig {
     }
 
     @Bean
-    public AuthenticationManager authenticationManager(
-            UserDetailsService userDetailsService,
-            PasswordEncoder passwordEncoder) {
-        DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
-        authenticationProvider.setUserDetailsService(userDetailsService);
-        authenticationProvider.setPasswordEncoder(passwordEncoder);
-
-        return new ProviderManager(authenticationProvider);
-    }
-
-    @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
+    @Bean
     public UserDetailsService getDetailsService() {
-        return new UserDetailsSeriveImpl();
+        return new UserDetailsServiceImpl();
     }
 
     @Bean

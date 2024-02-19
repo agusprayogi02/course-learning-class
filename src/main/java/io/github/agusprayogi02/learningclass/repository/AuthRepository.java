@@ -11,5 +11,5 @@ import io.github.agusprayogi02.learningclass.model.UserModel;
 @Repository
 @EnableJpaRepositories
 public interface AuthRepository extends CrudRepository<UserModel, UUID> {
-    public UserModel findByEmailIgnoreCase(String email);
+    public UserModel findByEmail(String email);
 }

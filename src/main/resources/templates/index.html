@@ -2,8 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Getting Started: Serving Web Content</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getting Started: Serving Web Content</title>
     <!-- this is where we refer the css file from src/main/resources/static/main.css -->
     <link th:href="@{/css/main.css}" rel="stylesheet" />
 </head>
@@ -22,7 +23,8 @@
                 <a href="#" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">Users</a>
                 <a href="#" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">Settings</a>
                 <a href="#" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">Profile</a>
-                <a href="#" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">Logout</a>
+                <a th:href="@{/auth/logout}"
+                    class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">Logout</a>
             </nav>
         </div>
 

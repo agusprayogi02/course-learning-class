@@ -8,11 +8,13 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Entity
 @Table(name = "users")
 @Data
-public class UserModel {
+@EqualsAndHashCode(callSuper = true)
+public class UserModel extends BaseModel {
     @Id
     @GeneratedValue
     private UUID id;

@@ -11,14 +11,14 @@ import io.github.agusprayogi02.learningclass.model.UserModel;
 import io.github.agusprayogi02.learningclass.repository.AuthRepository;
 
 @Component
-public class UserDetailsSeriveImpl implements UserDetailsService {
+public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
     private AuthRepository authRepo;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserModel user = authRepo.findByEmailIgnoreCase(username);
+        UserModel user = authRepo.findByEmail(username);
         if (user == null) {
             throw new UsernameNotFoundException("User tidak ditemukan");
         }
