@@ -2,10 +2,12 @@ package io.github.agusprayogi02.learningclass.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import io.github.agusprayogi02.learningclass.model.UserModel;
 import io.github.agusprayogi02.learningclass.service.UserDetailsSeriveImpl;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/auth")
@@ -23,8 +25,15 @@ public class AuthController {
     }
 
     @GetMapping("/register")
-    public String register(@RequestParam String param) {
+    public String register() {
         return "auth/register";
+    }
+
+    @PostMapping("/register")
+    public UserModel postRegister(@ModelAttribute("user") UserModel user) {
+        // TODO: process POST request
+
+        return user;
     }
 
 }

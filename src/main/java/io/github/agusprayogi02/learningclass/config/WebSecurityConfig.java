@@ -37,9 +37,8 @@ public class WebSecurityConfig {
                 })
                 .authorizeHttpRequests((url) -> {
                     url
-                            .requestMatchers("/auth/*", "/css/**").permitAll();
-                    url.requestMatchers("/").hasRole("USER");
-                    url.anyRequest().authenticated();
+                            .requestMatchers("/auth/**", "/css/**").permitAll();
+                    url.requestMatchers("/user/**").authenticated();
                 })
                 .build();
     }
