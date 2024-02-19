@@ -6,7 +6,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.Customizer;
-import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -18,7 +17,6 @@ import io.github.agusprayogi02.learningclass.service.UserDetailsSeriveImpl;
 
 @Configuration
 @EnableWebSecurity
-@EnableMethodSecurity
 public class WebSecurityConfig {
 
     @Bean
@@ -28,7 +26,7 @@ public class WebSecurityConfig {
                 .formLogin(form -> form
                         .loginPage("/auth/login")
                         .usernameParameter("email")
-                        .loginProcessingUrl("/auth/login/proccess"))
+                        .loginProcessingUrl("/auth/login/proccess").defaultSuccessUrl("/user/"))
                 .logout(logout -> {
                     logout.logoutUrl("/auth/logout");
                     logout.logoutSuccessUrl("/");
