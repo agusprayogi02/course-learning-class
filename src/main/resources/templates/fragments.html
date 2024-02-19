@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- this is where we refer the css file from src/main/resources/static/main.css -->
+    <link th:href="@{/css/main.css}" rel="stylesheet" />
+</head>
+
+<body class="bg-gray-100">
+
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div th:fragment="sidebar">
+            <div
+                class="bg-gray-800 text-white w-64 space-y-6 py-7 px-2 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out">
+                <a href="#" class="text-white flex items-center space-x-2 px-4">
+                    <span class="text-2xl font-bold">Admin Dashboard</span>
+                </a>
+                <nav>
+                    <a href="#"
+                        class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">Dashboard</a>
+                    <a href="#" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">Users</a>
+                    <a href="#" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">Settings</a>
+                    <a href="#" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">Profile</a>
+                    <a href="#" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">Logout</a>
+                </nav>
+            </div>
+        </div>
+        <!-- Main content -->
+        <div class="flex-1 p-10 text-2xl font-bold">
+            <header class="flex justify-between items-center pb-6">
+                <div>
+                    <h2 class="text-gray-600 font-semibold">Dashboard</h2>
+                    <span>Welcome back, Admin Name!</span>
+                </div>
+                <div class="flex items-center">
+                    <input type="search" placeholder="Search" class="px-5 py-2 border rounded-lg text-sm">
+                </div>
+            </header>
+
+            <div th:fragment="content" class="grid md:grid-cols-2 xl:grid-cols-4 gap-4">
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
